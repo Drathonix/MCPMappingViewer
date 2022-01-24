@@ -248,6 +248,9 @@ public class McpMappingLoader
 
     public TableModel getSearchResults(String input, IProgressListener progress)
     {
+        if(input.startsWith("!")) {
+            input = DrathonAbuse.executeSearchCommand(input);
+        }
         if (input == null || input.trim().isEmpty())
             return getClassModel();
 
