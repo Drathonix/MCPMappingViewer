@@ -48,6 +48,9 @@ public class ClassSrgData implements Comparable<ClassSrgData>
         return this.srgName;
     }
 
+    public String toString(){
+        return obfName+":"+srgName+":"+srgPkgName;
+    }
     public String getSrgPkgName()
     {
         return this.srgPkgName;

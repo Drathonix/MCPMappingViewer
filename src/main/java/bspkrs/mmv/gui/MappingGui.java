@@ -118,7 +118,7 @@ public class MappingGui extends JFrame
     private Thread                              curTask               = null;
     private final Map<String, McpMappingLoader> mcpInstances          = new HashMap<>();
     private final VersionFetcher                versionFetcher        = new VersionFetcher();
-    private McpMappingLoader                    currentLoader;
+    public static McpMappingLoader                    currentLoader;
     private AppVersionChecker                   versionChecker;
     private final String                        versionURL            = "http://bspk.rs/Minecraft/MMV/MMV.version";
     private final String                        mcfTopic              = "http://www.minecraftforum.net/topic/2115030-";

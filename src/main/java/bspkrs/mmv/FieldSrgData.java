@@ -20,6 +20,7 @@ public class FieldSrgData extends MemberSrgData implements Comparable<FieldSrgDa
     public FieldSrgData(String obfOwner, String obfName, String srgOwner, String srgPkg, String srgName, boolean isClientOnly)
     {
         super(obfOwner, obfName, srgOwner, srgPkg, srgName, isClientOnly);
+        //System.out.println(srgOwner + " : " + srgName);
     }
 
     @Override

@@ -37,6 +37,7 @@ public class VersionFetcher
     {
         if ((versions == null) || force)
         {
+            versions = new ArrayList<String>();
             final URL url = new URL(jsonUrl);
             final URLConnection connection = url.openConnection();
             connection.addRequestProperty("User-Agent", "MMV/1.0.0");
@@ -44,7 +45,6 @@ public class VersionFetcher
 
             Map<String, Object> json = new Gson().fromJson(br, Map.class);
 
-            versions = new ArrayList<String>();
             for (String mcVer : json.keySet())
                 for (String channel : ((Map<String, ArrayList<Double>[]>) json.get(mcVer)).keySet())
                     for (Double ver : ((Map<String, ArrayList<Double>>) json.get(mcVer)).get(channel))

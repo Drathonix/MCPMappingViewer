@@ -48,6 +48,9 @@ public class CsvData implements Comparable<CsvData>
     {
         return srgName + "," + mcpName + "," + side + "," + (needsQuoted ? "\"" + comment + "\"" : comment);
     }
+    public String toString(){
+        return toCsv();
+    }
 
     public String getSrgName()
     {

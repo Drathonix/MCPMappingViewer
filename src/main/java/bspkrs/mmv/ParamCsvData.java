@@ -67,4 +67,7 @@ public class ParamCsvData implements Comparable<ParamCsvData>
     {
         return mcpName.contains(s);
     }
+    public String toString(){
+        return toCsv();
+    }
 }
