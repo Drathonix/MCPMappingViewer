@@ -30,10 +30,10 @@ import java.util.TreeMap;
 
 public class CsvFile
 {
-    private final File                 file;
-    private final Map<String, CsvData> srgMemberName2CsvData;
-    private boolean                    isDirty;
-    private String                     headerLine;
+    public final File                 file;
+    public final Map<String, CsvData> srgMemberName2CsvData;
+    public boolean                    isDirty;
+    public String                     headerLine;
 
     public CsvFile(File file) throws IOException
     {

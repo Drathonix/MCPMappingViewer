@@ -24,20 +24,20 @@ import java.util.prefs.Preferences;
 
 public class AppVersionChecker
 {
-    private URL               versionURL;
-    private final String      appName;
-    private String            newVersion;
-    private final String      currentVersion;
-    private String            updateURL;
-    private String[]          logMsg;
-    private String[]          dialogMsg;
-    private final Preferences versionCheckTracker;
-    private final String      LAST_VERSION_FOUND  = "lastversionfound";
-    private final String      RUNS_SINCE_LAST_MSG = "runs_since_last_message";
-    private final String      CHECK_ERROR         = "check_error";
-    private String            lastNewVersionFound;
-    private final boolean     errorDetected;
-    private int               runsSinceLastMessage;
+    public URL               versionURL;
+    public final String      appName;
+    public String            newVersion;
+    public final String      currentVersion;
+    public String            updateURL;
+    public String[]          logMsg;
+    public String[]          dialogMsg;
+    public final Preferences versionCheckTracker;
+    public final String      LAST_VERSION_FOUND  = "lastversionfound";
+    public final String      RUNS_SINCE_LAST_MSG = "runs_since_last_message";
+    public final String      CHECK_ERROR         = "check_error";
+    public String            lastNewVersionFound;
+    public final boolean     errorDetected;
+    public int               runsSinceLastMessage;
 
     public AppVersionChecker(String appName, String currentVersion, String versionURL, String updateURL, String[] logMsg, String[] dialogMsg, int timeoutMS)
     {
@@ -146,7 +146,7 @@ public class AppVersionChecker
         return new NaturalOrderComparator().compare(currentVersion, newVersion) >= 0;
     }
 
-    private String replaceAllTags(String s)
+    public String replaceAllTags(String s)
     {
         return s.replace("{oldVer}", currentVersion).replace("{newVer}", newVersion).replace("{appName}", appName).replace("{updateURL}", updateURL);
     }

@@ -40,7 +40,7 @@ public class McpMappingLoader
 
     public static class CantLoadMCPMappingException extends Exception
     {
-        private static final long serialVersionUID = 1;
+        public static final long serialVersionUID = 1;
 
         public CantLoadMCPMappingException(String reason)
         {
@@ -48,25 +48,25 @@ public class McpMappingLoader
         }
     }
 
-    private final File                                   baseDir                 = new File(new File(System.getProperty("user.home")), ".cache/MCPMappingViewer");
-    private final String                                 baseSrgDir              = "{mc_ver}";
-    private final String                                 baseMappingDir          = "{mc_ver}/{channel}_{map_ver}";
-    private final String                                 baseMappingUrl          = "https://maven.minecraftforge.net/de/oceanlabs/mcp/mcp_{channel}/{map_ver}-{mc_ver}/mcp_{channel}-{map_ver}-{mc_ver}.zip";
-    private final String                                 newBaseSrgUrl           = "https://maven.minecraftforge.net/de/oceanlabs/mcp/mcp_config/{mc_ver}/mcp_config-{mc_ver}.zip";
-    private final String                                 oldBaseSrgUrl           = "https://maven.minecraftforge.net/de/oceanlabs/mcp/mcp/{mc_ver}/mcp-{mc_ver}-srg.zip";
+    public final File                                   baseDir                 = new File(new File(System.getProperty("user.home")), ".cache/MCPMappingViewer");
+    public final String                                 baseSrgDir              = "{mc_ver}";
+    public final String                                 baseMappingDir          = "{mc_ver}/{channel}_{map_ver}";
+    public final String                                 baseMappingUrl          = "https://maven.minecraftforge.net/de/oceanlabs/mcp/mcp_{channel}/{map_ver}-{mc_ver}/mcp_{channel}-{map_ver}-{mc_ver}.zip";
+    public final String                                 newBaseSrgUrl           = "https://maven.minecraftforge.net/de/oceanlabs/mcp/mcp_config/{mc_ver}/mcp_config-{mc_ver}.zip";
+    public final String                                 oldBaseSrgUrl           = "https://maven.minecraftforge.net/de/oceanlabs/mcp/mcp/{mc_ver}/mcp-{mc_ver}-srg.zip";
 
-    private final File                                   srgDir;
-    private final File                                   mappingDir;
-    private final File                                   srgFile;
-    private final File                                   excFile;
-    private final File                                   staticMethodsFile;
-    private SrgFile                                      srgFileData;
-    private ExcFile                                      excFileData;
-    private StaticMethodsFile                            staticMethods;
-    private CsvFile                                      csvFieldData, csvMethodData;
-    private ParamCsvFile                                 csvParamData;
-    private final MappingGui                             parentGui;
-    private final Map<String, McpBotCommand>             commandMap              = new TreeMap<String, McpBotCommand>();                                                                // srgName -> McpBotCommand
+    public final File                                   srgDir;
+    public final File                                   mappingDir;
+    public final File                                   srgFile;
+    public final File                                   excFile;
+    public final File                                   staticMethodsFile;
+    public SrgFile                                      srgFileData;
+    public ExcFile                                      excFileData;
+    public StaticMethodsFile                            staticMethods;
+    public CsvFile                                      csvFieldData, csvMethodData;
+    public ParamCsvFile                                 csvParamData;
+    public final MappingGui                             parentGui;
+    public final Map<String, McpBotCommand>             commandMap              = new TreeMap<String, McpBotCommand>();                                                                // srgName -> McpBotCommand
     public final Map<MethodSrgData, CsvData>             srgMethodData2CsvData   = new TreeMap<MethodSrgData, CsvData>();
     public final Map<FieldSrgData, CsvData>              srgFieldData2CsvData    = new TreeMap<FieldSrgData, CsvData>();
     public final Map<ExcData, Map<String, ParamCsvData>> excData2MapParamCsvData = new TreeMap<ExcData, Map<String, ParamCsvData>>();
@@ -119,7 +119,7 @@ public class McpMappingLoader
         linkExcDataToSetParamCsvData();
     }
 
-    private File getSubDirForZip(String[] tokens, String baseZipUrl, String baseSubDir) throws CantLoadMCPMappingException, NoSuchAlgorithmException, DigestException, IOException
+    public File getSubDirForZip(String[] tokens, String baseZipUrl, String baseSubDir) throws CantLoadMCPMappingException, NoSuchAlgorithmException, DigestException, IOException
     {
         if (!baseDir.exists() && !baseDir.mkdirs())
             throw new CantLoadMCPMappingException("Application data folder does not exist and cannot be created.");
@@ -134,12 +134,12 @@ public class McpMappingLoader
         return subDir;
     }
 
-    private String replaceTokens(String s, String[] tokens)
+    public String replaceTokens(String s, String[] tokens)
     {
         return s.replace("{mc_ver}", tokens[0]).replace("{channel}", tokens[1]).replace("{map_ver}", tokens[2]);
     }
 
-    private void loadSrgMapping(boolean newFormat) throws IOException
+    public void loadSrgMapping(boolean newFormat) throws IOException
     {
         staticMethods = new StaticMethodsFile(staticMethodsFile);
         excFileData = new ExcFile(excFile);
@@ -148,14 +148,14 @@ public class McpMappingLoader
                 : new SrgFile(srgFile, excFileData, staticMethods);
     }
 
-    private void loadCsvMapping() throws IOException
+    public void loadCsvMapping() throws IOException
     {
         csvFieldData = new CsvFile(new File(mappingDir, "fields.csv"));
         csvMethodData = new CsvFile(new File(mappingDir, "methods.csv"));
         csvParamData = new ParamCsvFile(new File(mappingDir, "params.csv"));
     }
 
-    private void linkSrgDataToCsvData()
+    public void linkSrgDataToCsvData()
     {
         for (Entry<String, MethodSrgData> methodData : srgFileData.srgMethodName2MethodData.entrySet())
         {
@@ -178,7 +178,7 @@ public class McpMappingLoader
         }
     }
 
-    private void linkExcDataToSetParamCsvData()
+    public void linkExcDataToSetParamCsvData()
     {
         for (Entry<String, ExcData> excData : excFileData.srgMethodName2ExcData.entrySet())
         {
@@ -196,7 +196,7 @@ public class McpMappingLoader
         }
     }
 
-    private CsvData processMemberDataEdit(MemberType type, Map<String, ? extends MemberSrgData> srg2MemberData,
+    public CsvData processMemberDataEdit(MemberType type, Map<String, ? extends MemberSrgData> srg2MemberData,
             Map<? extends MemberSrgData, CsvData> memberData2CsvData,
             String srgName, String mcpName, String comment)
     {
@@ -338,12 +338,12 @@ public class McpMappingLoader
     @SuppressWarnings("rawtypes")
     public class ClassModel extends AbstractTableModel
     {
-        private static final long              serialVersionUID = 1L;
+        public static final long              serialVersionUID = 1L;
         public final String[]                  columnNames      = { "Pkg name", "SRG name", "Obf name" };
-        private final Class[]                  columnTypes      = { String.class, String.class, String.class };
-        private final boolean[]                isColumnEditable = { false, false, false };
-        private final Object[][]               data;
-        private final Collection<ClassSrgData> collectionRef;
+        public final Class[]                  columnTypes      = { String.class, String.class, String.class };
+        public final boolean[]                isColumnEditable = { false, false, false };
+        public final Object[][]               data;
+        public final Collection<ClassSrgData> collectionRef;
 
         public ClassModel(Collection<ClassSrgData> map)
         {
@@ -411,12 +411,12 @@ public class McpMappingLoader
     @SuppressWarnings("rawtypes")
     public class MethodModel extends AbstractTableModel
     {
-        private static final long        serialVersionUID = 1L;
-        private final String[]           columnNames      = { "MCP Name", "SRG Name", "Obf Name", "SRG Descriptor", "Comment" };
-        private final Class[]            columnTypes      = { String.class, String.class, String.class, String.class, String.class };
-        private final boolean[]          isColumnEditable = { true, false, false, false, true };
-        private final Object[][]         data;
-        private final Set<MethodSrgData> setRef;
+        public static final long        serialVersionUID = 1L;
+        public final String[]           columnNames      = { "MCP Name", "SRG Name", "Obf Name", "SRG Descriptor", "Comment" };
+        public final Class[]            columnTypes      = { String.class, String.class, String.class, String.class, String.class };
+        public final boolean[]          isColumnEditable = { true, false, false, false, true };
+        public final Object[][]         data;
+        public final Set<MethodSrgData> setRef;
 
         public MethodModel(Set<MethodSrgData> srgMethodSet)
         {
@@ -521,11 +521,11 @@ public class McpMappingLoader
     @SuppressWarnings("rawtypes")
     public class ParamModel extends AbstractTableModel
     {
-        private static final long serialVersionUID = 1L;
-        private final String[]    columnNames      = { "MCP Name", "SRG Name", "Type" };
-        private final Class[]     columnTypes      = { String.class, String.class, String.class };
-        private final boolean[]   isColumnEditable = { true, false, false };
-        private final Object[][]  data;
+        public static final long serialVersionUID = 1L;
+        public final String[]    columnNames      = { "MCP Name", "SRG Name", "Type" };
+        public final Class[]     columnTypes      = { String.class, String.class, String.class };
+        public final boolean[]   isColumnEditable = { true, false, false };
+        public final Object[][]  data;
 
         public ParamModel(ExcData excData)
         {
@@ -628,12 +628,12 @@ public class McpMappingLoader
     @SuppressWarnings("rawtypes")
     public class FieldModel extends AbstractTableModel
     {
-        private static final long       serialVersionUID = 1L;
-        private final String[]          columnNames      = { "MCP Name", "SRG Name", "Obf Name", "Comment" };
-        private final Class[]           columnTypes      = { String.class, String.class, String.class, String.class };
-        private final boolean[]         isColumnEditable = { true, false, false, true };
-        private final Object[][]        data;
-        private final Set<FieldSrgData> setRef;
+        public static final long       serialVersionUID = 1L;
+        public final String[]          columnNames      = { "MCP Name", "SRG Name", "Obf Name", "Comment" };
+        public final Class[]           columnTypes      = { String.class, String.class, String.class, String.class };
+        public final boolean[]         isColumnEditable = { true, false, false, true };
+        public final Object[][]        data;
+        public final Set<FieldSrgData> setRef;
 
         public FieldModel(Set<FieldSrgData> srgFieldSet)
         {

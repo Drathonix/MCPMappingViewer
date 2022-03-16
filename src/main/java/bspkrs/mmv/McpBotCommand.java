@@ -32,10 +32,10 @@ public class McpBotCommand
         }
     }
 
-    private final BotCommand command;
-    private final String     srgName;
-    private final String     newName;
-    private final String     comment;
+    public final BotCommand command;
+    public final String     srgName;
+    public final String     newName;
+    public final String     comment;
 
     public McpBotCommand(BotCommand command, String srgName, String newName, String comment)
     {

@@ -5884,7 +5884,7 @@ addMapping("loadLocaleDataFiles", Locale.class, "func_135022_a");
 addMapping("formatMessage", Locale.class, "func_135023_a");
 addMapping("checkUnicode", Locale.class, "func_135024_b");
 addMapping("isUnicode", Locale.class, "func_135025_a");
-addMapping("translateKeyPrivate", Locale.class, "func_135026_c");
+addMapping("translateKeypublic", Locale.class, "func_135026_c");
 addMapping("loadLocaleData", Locale.class, "func_135028_a");
 addMapping("hasKey", Locale.class, "func_188568_a");
 addMapping("isFileExisting", ResourceIndex.class, "func_188545_b");

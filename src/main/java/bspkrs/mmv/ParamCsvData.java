@@ -17,9 +17,9 @@ package bspkrs.mmv;
 
 public class ParamCsvData implements Comparable<ParamCsvData>
 {
-    private final String srgName;
-    private String       mcpName;
-    private final int    side;
+    public final String srgName;
+    public String       mcpName;
+    public final int    side;
 
     public ParamCsvData(String srgName, String mcpName, int side)
     {

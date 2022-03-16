@@ -17,11 +17,11 @@ package bspkrs.mmv;
 
 public class CsvData implements Comparable<CsvData>
 {
-    private final String srgName;
-    private String       mcpName;
-    private final int    side;
-    private String       comment;
-    private boolean      needsQuoted;
+    public final String srgName;
+    public String       mcpName;
+    public final int    side;
+    public String       comment;
+    public boolean      needsQuoted;
 
     public CsvData(String srgName, String mcpName, int side, String comment)
     {

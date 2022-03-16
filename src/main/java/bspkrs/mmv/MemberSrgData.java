@@ -17,12 +17,12 @@ package bspkrs.mmv;
 
 public class MemberSrgData
 {
-    private final String  obfOwner;
-    private final String  obfName;
-    private final String  srgOwner;
-    private final String  srgPkg;
-    private final String  srgName;
-    private final boolean isClientOnly;
+    public final String  obfOwner;
+    public final String  obfName;
+    public final String  srgOwner;
+    public final String  srgPkg;
+    public final String  srgName;
+    public final boolean isClientOnly;
 
     public MemberSrgData(String obfOwner, String obfName, String srgOwner, String srgPkg, String srgName, boolean isClientOnly)
     {

@@ -89,44 +89,44 @@ import immibis.bon.IProgressListener;
 public class MappingGui extends JFrame
 {
     public static final String                  VERSION_NUMBER        = "1.0.1";
-    private static final long                   serialVersionUID      = 1L;
-    private final Preferences                   prefs                 = Preferences.userNodeForPackage(MappingGui.class);
-    private JFrame                              frmMcpMappingViewer;
-    private JButton                             btnRefreshTables;
-    private JComboBox<String>                   cmbMappingVersion;
-    private JCheckBox                           chkForceRefresh;
-    private JPanel                              pnlProgress;
-    private JProgressBar                        progressBar;
-    private JPanel                              pnlFilter;
-    private JComboBox<String>                   cmbFilter;
-    private JButton                             btnSearch;
-    private JButton                             btnGetBotCommands;
-    private JCheckBox                           chkClearOnCopy;
-    private final static String                 PREFS_KEY_FILTER      = "filter";
-    private final static String                 PREFS_KEY_CLASS_SORT  = "classSort";
-    private final static String                 PREFS_KEY_METHOD_SORT = "methodSort";
-    private final static String                 PREFS_KEY_PARAM_SORT  = "paramSort";
-    private final static String                 PREFS_KEY_FIELD_SORT  = "fieldSort";
-    private final List<RowSorter.SortKey>       classSort             = new ArrayList<RowSorter.SortKey>();
-    private final List<RowSorter.SortKey>       methodSort            = new ArrayList<RowSorter.SortKey>();
-    private final List<RowSorter.SortKey>       paramSort             = new ArrayList<RowSorter.SortKey>();
-    private final List<RowSorter.SortKey>       fieldSort             = new ArrayList<RowSorter.SortKey>();
-    private JTable                              tblClasses;
-    private JTable                              tblMethods;
-    private JTable                              tblFields;
-    private JTable                              tblParams;
-    private Thread                              curTask               = null;
-    private final Map<String, McpMappingLoader> mcpInstances          = new HashMap<>();
-    private final VersionFetcher                versionFetcher        = new VersionFetcher();
+    public static final long                   serialVersionUID      = 1L;
+    public final Preferences                   prefs                 = Preferences.userNodeForPackage(MappingGui.class);
+    public JFrame                              frmMcpMappingViewer;
+    public JButton                             btnRefreshTables;
+    public JComboBox<String>                   cmbMappingVersion;
+    public JCheckBox                           chkForceRefresh;
+    public JPanel                              pnlProgress;
+    public JProgressBar                        progressBar;
+    public JPanel                              pnlFilter;
+    public JComboBox<String>                   cmbFilter;
+    public JButton                             btnSearch;
+    public JButton                             btnGetBotCommands;
+    public JCheckBox                           chkClearOnCopy;
+    public final static String                 PREFS_KEY_FILTER      = "filter";
+    public final static String                 PREFS_KEY_CLASS_SORT  = "classSort";
+    public final static String                 PREFS_KEY_METHOD_SORT = "methodSort";
+    public final static String                 PREFS_KEY_PARAM_SORT  = "paramSort";
+    public final static String                 PREFS_KEY_FIELD_SORT  = "fieldSort";
+    public final List<RowSorter.SortKey>       classSort             = new ArrayList<RowSorter.SortKey>();
+    public final List<RowSorter.SortKey>       methodSort            = new ArrayList<RowSorter.SortKey>();
+    public final List<RowSorter.SortKey>       paramSort             = new ArrayList<RowSorter.SortKey>();
+    public final List<RowSorter.SortKey>       fieldSort             = new ArrayList<RowSorter.SortKey>();
+    public JTable                              tblClasses;
+    public JTable                              tblMethods;
+    public JTable                              tblFields;
+    public JTable                              tblParams;
+    public Thread                              curTask               = null;
+    public final Map<String, McpMappingLoader> mcpInstances          = new HashMap<>();
+    public final VersionFetcher                versionFetcher        = new VersionFetcher();
     public static McpMappingLoader                    currentLoader;
-    private AppVersionChecker                   versionChecker;
-    private final String                        versionURL            = "http://bspk.rs/Minecraft/MMV/MMV.version";
-    private final String                        mcfTopic              = "http://www.minecraftforum.net/topic/2115030-";
+    public AppVersionChecker                   versionChecker;
+    public final String                        versionURL            = "http://bspk.rs/Minecraft/MMV/MMV.version";
+    public final String                        mcfTopic              = "http://www.minecraftforum.net/topic/2115030-";
 
     // @formatter:off
     public static DefaultTableModel classesDefaultModel = new DefaultTableModel(new Object[][] { {}, }, new String[] { "Pkg name", "SRG name", "Obf name" })
     {
-        private static final long serialVersionUID = 1L;
+        public static final long serialVersionUID = 1L;
         boolean[]                 columnEditables  = new boolean[] { false, false, false };
         @SuppressWarnings("rawtypes")
         Class[]                   columnTypes      = new Class[] { String.class, String.class, String.class };
@@ -141,7 +141,7 @@ public class MappingGui extends JFrame
 
     public static DefaultTableModel methodsDefaultModel = new DefaultTableModel( new Object[][] { {}, }, new String[] { "MCP Name", "SRG Name", "Obf Name", "SRG Descriptor", "Comment" })
     {
-        private static final long serialVersionUID = 1L;
+        public static final long serialVersionUID = 1L;
         boolean[]                 columnEditables  = new boolean[] { false, false, false, false, false };
         @SuppressWarnings("rawtypes")
         Class[]                   columnTypes      = new Class[] { String.class, String.class, String.class, String.class, String.class };
@@ -156,7 +156,7 @@ public class MappingGui extends JFrame
 
     public static DefaultTableModel paramsDefaultModel = new DefaultTableModel( new Object[][] { {}, }, new String[] { "MCP Name", "SRG Name", "Type" })
     {
-        private static final long serialVersionUID = 1L;
+        public static final long serialVersionUID = 1L;
         boolean[]                 columnEditables  = new boolean[] { false, false, false };
         @SuppressWarnings("rawtypes")
         Class[]                   columnTypes      = new Class[] { String.class, String.class, String.class };
@@ -171,7 +171,7 @@ public class MappingGui extends JFrame
 
     public static DefaultTableModel fieldsDefaultModel = new DefaultTableModel( new Object[][] { {}, }, new String[] { "MCP Name", "SRG Name", "Obf Name", "Comment" } )
     {
-        private static final long serialVersionUID = 1L;
+        public static final long serialVersionUID = 1L;
         boolean[]                 columnEditables  = new boolean[] { false, false, false, false };
         @SuppressWarnings("rawtypes")
         Class[]                   columnTypes      = new Class[] { String.class, String.class, String.class, String.class };
@@ -183,11 +183,11 @@ public class MappingGui extends JFrame
         @Override
         public boolean isCellEditable(int row, int column) { return columnEditables[column]; }
     };
-    private JSplitPane splitMethods;
-    private JButton btnGetVersions;
+    public JSplitPane splitMethods;
+    public JButton btnGetVersions;
     // @formatter:on
 
-    private void savePrefs()
+    public void savePrefs()
     {
         for (int i = 0; i < Math.min(cmbFilter.getItemCount(), 20); i++)
             prefs.put(PREFS_KEY_FILTER + i, cmbFilter.getItemAt(i));
@@ -229,7 +229,7 @@ public class MappingGui extends JFrame
             prefs.putInt(PREFS_KEY_FIELD_SORT, 1);
     }
 
-    private void loadPrefs(boolean sortOnly)
+    public void loadPrefs(boolean sortOnly)
     {
         if (!sortOnly)
         {
@@ -277,7 +277,7 @@ public class MappingGui extends JFrame
         tblFields.getRowSorter().setSortKeys(fieldSort);
     }
 
-    private void checkForUpdates()
+    public void checkForUpdates()
     {
         versionChecker = new AppVersionChecker("MCP Mapping Viewer", VERSION_NUMBER, versionURL, mcfTopic,
                 new String[] { "{appName} {oldVer} is out of date! Visit {updateURL} to download the latest release ({newVer})." },
@@ -320,7 +320,7 @@ public class MappingGui extends JFrame
         });
     }
 
-    private static String getPrintableStackTrace(Throwable e, Set<StackTraceElement> stopAt)
+    public static String getPrintableStackTrace(Throwable e, Set<StackTraceElement> stopAt)
     {
         String s = e.toString();
         int numPrinted = 0;
@@ -347,7 +347,7 @@ public class MappingGui extends JFrame
         return s;
     }
 
-    private static String getStackTraceMessage(String prefix, Throwable e)
+    public static String getStackTraceMessage(String prefix, Throwable e)
     {
         String s = prefix;
 
@@ -378,7 +378,7 @@ public class MappingGui extends JFrame
     /**
      * Initialize the contents of the frame.
      */
-    private void initialize()
+    public void initialize()
     {
         frmMcpMappingViewer = new JFrame();
         frmMcpMappingViewer.setIconImage(new ImageIcon(MappingGui.class.getResource("/bspkrs/mmv/gui/icon/bspkrs32.png")).getImage());
@@ -746,7 +746,7 @@ public class MappingGui extends JFrame
 
     class ClassTableSelectionListener implements ListSelectionListener
     {
-        private final JTable table;
+        public final JTable table;
 
         public ClassTableSelectionListener(JTable table)
         {
@@ -789,7 +789,7 @@ public class MappingGui extends JFrame
 
     class MethodTableSelectionListener implements ListSelectionListener
     {
-        private final JTable table;
+        public final JTable table;
 
         public MethodTableSelectionListener(JTable table)
         {
@@ -868,7 +868,7 @@ public class MappingGui extends JFrame
                     {
                         IProgressListener progress = new IProgressListener()
                         {
-                            private String currentText;
+                            public String currentText;
 
                             @Override
                             public void start(final int max, final String text)
@@ -1086,7 +1086,7 @@ public class MappingGui extends JFrame
                     {
                         IProgressListener progress = new IProgressListener()
                         {
-                            private String currentText;
+                            public String currentText;
 
                             @Override
                             public void start(final int max, final String text)

@@ -23,10 +23,10 @@ public class ClassSrgData implements Comparable<ClassSrgData>
         OBF
     }
 
-    private final String   obfName;
-    private final String   srgName;
-    private String         srgPkgName;
-    private final boolean  isClientOnly;
+    public final String   obfName;
+    public final String   srgName;
+    public String         srgPkgName;
+    public final boolean  isClientOnly;
 
     public static SortType sortType = SortType.PKG;
 

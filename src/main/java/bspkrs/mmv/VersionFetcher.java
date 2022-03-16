@@ -29,8 +29,8 @@ import com.google.gson.Gson;
 
 public class VersionFetcher
 {
-    private final String jsonUrl = "https://maven.minecraftforge.net/de/oceanlabs/mcp/versions.json";
-    private List<String> versions;
+    public final String jsonUrl = "https://maven.minecraftforge.net/de/oceanlabs/mcp/versions.json";
+    public List<String> versions;
 
     @SuppressWarnings("unchecked")
     public List<String> getVersions(boolean force) throws IOException

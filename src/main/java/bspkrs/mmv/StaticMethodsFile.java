@@ -25,7 +25,7 @@ import java.util.Scanner;
 
 public class StaticMethodsFile
 {
-    private final File  file;
+    public final File  file;
     public List<String> staticMethods;
 
     public StaticMethodsFile(File file) throws IOException

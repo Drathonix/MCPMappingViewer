@@ -18,8 +18,8 @@ package bspkrs.mmv;
 
 public class MethodSrgData extends MemberSrgData implements Comparable<MethodSrgData>
 {
-    private final String obfDescriptor;
-    private final String srgDescriptor;
+    public final String obfDescriptor;
+    public final String srgDescriptor;
 
     public MethodSrgData(String obfOwner, String obfName, String obfDescriptor, String srgOwner, String srgPkg, String srgName, String srgDescriptor, boolean isClientOnly)
     {

@@ -40,11 +40,11 @@ import bspkrs.mmv.gui.MappingGui;
 
 public class RemoteZipHandler
 {
-    private final URL    zipUrl;
-    private final URL    digestUrl;
-    private final File   localDir;
-    private final String digestType;
-    private final String zipFileName;
+    public final URL    zipUrl;
+    public final URL    digestUrl;
+    public final File   localDir;
+    public final String digestType;
+    public final String zipFileName;
 
     public RemoteZipHandler(String urlString, File dir, String digestType) throws MalformedURLException
     {

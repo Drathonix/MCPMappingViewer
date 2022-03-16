@@ -22,12 +22,12 @@ import java.util.regex.Pattern;
 
 public class ExcData implements Comparable<ExcData>
 {
-    private final String   srgOwner;
-    private final String   srgName;
-    private final String   descriptor;
-    private final String[] exceptions;
-    private final String[] parameters;
-    private final String[] paramTypes;
+    public final String   srgOwner;
+    public final String   srgName;
+    public final String   descriptor;
+    public final String[] exceptions;
+    public final String[] parameters;
+    public final String[] paramTypes;
 
     public ExcData(String srgOwner, String srgName, String descriptor, String[] exceptions, String[] parameters)
     {

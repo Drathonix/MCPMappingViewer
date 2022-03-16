@@ -21,7 +21,7 @@ import bspkrs.mmv.version.NaturalOrderComparator;
 
 public class SplittedNaturalComparator implements Comparator<Object>
 {
-    private final String splitter;
+    public final String splitter;
 
     public SplittedNaturalComparator(String splitter)
     {
